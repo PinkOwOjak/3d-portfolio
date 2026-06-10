@@ -1,0 +1,48 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem src -Recurse -File | ForEach-Object { $_.FullName.Replace\\(\\(Get-Location\\).Path + '\\\\', ''\\) }; Get-ChildItem public -Recurse -File | ForEach-Object { $_.FullName.Replace\\(\\(Get-Location\\).Path + '\\\\', ''\\) })",
+      "PowerShell(Test-Path \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\src\\\\data\\\\profile.ts\"; Get-ChildItem \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\src\" -Recurse -File | ForEach-Object { $_.FullName.Replace\\('d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\', ''\\) } | Select-Object -First 60; git -C \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\" log --oneline -5)",
+      "PowerShell(Get-ChildItem \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\public\" -Recurse -File | ForEach-Object { $_.FullName.Replace\\('d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\public\\\\', ''\\) }; Get-Content \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\index.html\" -TotalCount 20)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm run lint)",
+      "PowerShell(npx eslint . -f unix | Out-File \"$env:TEMP\\\\lint_before.txt\" -Encoding utf8; \\(Get-Content \"$env:TEMP\\\\lint_before.txt\" | Measure-Object -Line\\).Lines; git stash pop)",
+      "PowerShell(git stash drop)",
+      "PowerShell(npm run build 2>$null)",
+      "PowerShell(npm run dev)",
+      "PowerShell($r = Invoke-WebRequest \"http://localhost:5173/\" -UseBasicParsing; $r.StatusCode; $r.Content | Select-String \"Pranto\" | Select-Object -First 2; $pdf = Invoke-WebRequest \"http://localhost:5173/downloads/Pranto_Resume.pdf\" -UseBasicParsing -Method Head; $pdf.StatusCode)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/)",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1; if \\($conn\\) { $p = Get-Process -Id $conn.OwningProcess; $p.Id; $p.ProcessName; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=$\\($conn.OwningProcess\\)\"\\).CommandLine } else { \"nothing listening\" })",
+      "PowerShell(Get-ChildItem \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\public\\\\images\\\\placeholder.webp\" | Select-Object Length; Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\\\\public\\\\images\\\\placeholder.webp\"\\); \"$\\($img.Width\\)x$\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "PowerShell(\"---\")",
+      "PowerShell($LASTEXITCODE)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if \\(-not \\(Test-Path $edge\\)\\) { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" }; Test-Path $edge; $tmp = \"$env:TEMP\\\\proj_shots\"; New-Item -ItemType Directory -Force $tmp | Out-Null; & $edge --headless=new --disable-gpu --screenshot=\"$tmp\\\\polymtd.png\" --window-size=1600,1000 --hide-scrollbars --virtual-time-budget=8000 \"https://pinkowojak.github.io/PolyMTD-Keccak-Variants/\" 2>$null; Start-Sleep 2; Get-ChildItem $tmp)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if \\(-not \\(Test-Path $edge\\)\\) { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" }; $tmp = \"$env:TEMP\\\\proj_shots\"; & $edge --headless=new --disable-gpu --screenshot=\"$tmp\\\\prng.png\" --window-size=1600,1000 --hide-scrollbars --virtual-time-budget=8000 \"https://pinkowojak.github.io/PRNG-Visualizer/\" 2>$null; Start-Sleep 1; & $edge --headless=new --disable-gpu --screenshot=\"$tmp\\\\skincare.png\" --window-size=1600,1000 --hide-scrollbars --virtual-time-budget=8000 \"https://pinkowojak.github.io/skincare-tracker/\" 2>$null; Start-Sleep 1; Get-ChildItem $tmp)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if \\(-not \\(Test-Path $edge\\)\\) { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" }; $tmp = \"$env:TEMP\\\\proj_shots\"; & $edge --headless=new --disable-gpu --user-data-dir=\"$tmp\\\\ud1\" --screenshot=\"$tmp\\\\prng.png\" --window-size=1600,1000 --hide-scrollbars --virtual-time-budget=8000 \"https://pinkowojak.github.io/PRNG-Visualizer/\"; Start-Sleep 2; Get-ChildItem $tmp -File)",
+      "Read(//c/Users/prant/AppData/Local/Temp/proj_shots/**)",
+      "PowerShell($tmp = \"$env:TEMP\\\\proj_shots\"; $dests = @\\(\"public\\\\images\", \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\public\\\\images\"\\); foreach \\($d in $dests\\) { Copy-Item \"$tmp\\\\polymtd.png\" \"$d\\\\polymtd.png\" -Force; Copy-Item \"$tmp\\\\prng.png\" \"$d\\\\prng-visualizer.png\" -Force; Copy-Item \"$tmp\\\\skincare.png\" \"$d\\\\skincare-tracker.png\" -Force }; Get-ChildItem \"public\\\\images\\\\polymtd.png\", \"public\\\\images\\\\prng-visualizer.png\", \"public\\\\images\\\\skincare-tracker.png\" | Select-Object Name, Length)",
+      "PowerShell($f = \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\src\\\\data\\\\profile.ts\"; \\(Get-Content $f -Raw -Encoding utf8\\) -replace 'image: \"/images/placeholder\\\\.webp\",', 'IMAGE_PLACEHOLDER' | Out-Null; Select-String -Path $f -Pattern 'image:' | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" })",
+      "Bash(curl -s \"http://localhost:5173/src/components/styles/Work.css\")",
+      "PowerShell($ref = \"d:\\\\Productive time\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\\\\ref\\\\3d-portfolio\"; git diff --no-index --stat \"$ref\\\\src\\\\components\\\\Work.tsx\" \"src\\\\components\\\\Work.tsx\"; \"exit: $LASTEXITCODE\"; git diff --no-index --stat \"$ref\\\\src\\\\components\\\\styles\\\\Work.css\" \"src\\\\components\\\\styles\\\\Work.css\"; \"exit: $LASTEXITCODE\"; git diff --no-index --stat \"$ref\\\\src\\\\components\\\\WorkImage.tsx\" \"src\\\\components\\\\WorkImage.tsx\"; \"exit: $LASTEXITCODE\")",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1; if \\($conn\\) { Stop-Process -Id $conn.OwningProcess -Force -Confirm:$false; \"killed PID $\\($conn.OwningProcess\\)\" } else { \"no listener\" })",
+      "PowerShell($ref = \"d:\\\\Productive time\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\\\\ref\\\\3d-portfolio\"; git diff --no-index --stat \"$ref\\\\src\" \"src\"; \"EXIT: $LASTEXITCODE\")",
+      "PowerShell($ref = \"d:\\\\Productive time\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\\\\ref\\\\3d-portfolio\"; git diff --no-index \"$ref\\\\src\\\\components\\\\Work.tsx\" \"src\\\\components\\\\Work.tsx\" | Select-String '^[+-]' | Select-String -NotMatch '^[+-]{3}' | ForEach-Object { $_.Line })",
+      "Bash(curl -s -o /dev/null -w \"page: %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s \"http://localhost:5173/src/components/Work.tsx\")",
+      "PowerShell($ref = \"d:\\\\Productive time\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\\\\ref\\\\3d-portfolio\"; \"== HASHES \\(working vs ref\\) ==\"; foreach \\($f in @\\(\"src\\\\components\\\\WorkImage.tsx\", \"src\\\\components\\\\styles\\\\Work.css\", \"src\\\\components\\\\Work.tsx\"\\)\\) { $a = \\(Get-FileHash $f -Algorithm SHA256\\).Hash; $b = \\(Get-FileHash \"$ref\\\\$f\" -Algorithm SHA256\\).Hash; $match = if \\($a -eq $b\\) { \"IDENTICAL\" } else { \"DIFFERS\" }; \"$f : $match\" }; \"== ALL LISTENING NODE/VITE PORTS ==\"; Get-NetTCPConnection -State Listen | ForEach-Object { try { $p = Get-Process -Id $_.OwningProcess -ErrorAction Stop; if \\($p.ProcessName -match 'node|vite'\\) { \"$\\($_.LocalAddress\\):$\\($_.LocalPort\\) PID=$\\($p.Id\\)\" } } catch {} } | Sort-Object -Unique)",
+      "PowerShell($d = \"$env:TEMP\\\\workdiag\"; New-Item -ItemType Directory -Force $d | Out-Null; Set-Location $d; npm init -y | Out-Null; npm install puppeteer-core 2>$null | Select-Object -Last 1; Test-Path \"$d\\\\node_modules\\\\puppeteer-core\"; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
+      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag.js; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
+      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag2.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
+      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag3.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")"
+    ],
+    "additionalDirectories": [
+      "d:\\Productive time\\3d-portfolio\\3d-portfolio\\src\\data",
+      "d:\\Productive time\\3d-portfolio\\3d-portfolio\\src\\components",
+      "C:\\Users\\prant\\AppData\\Local\\Temp\\workdiag"
+    ]
+  }
+}
