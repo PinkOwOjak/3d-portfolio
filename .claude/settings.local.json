@@ -37,7 +37,10 @@
       "PowerShell($d = \"$env:TEMP\\\\workdiag\"; New-Item -ItemType Directory -Force $d | Out-Null; Set-Location $d; npm init -y | Out-Null; npm install puppeteer-core 2>$null | Select-Object -Last 1; Test-Path \"$d\\\\node_modules\\\\puppeteer-core\"; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
       "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag.js; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
       "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag2.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
-      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag3.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")"
+      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag3.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
+      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag4.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
+      "PowerShell(Set-Location \"$env:TEMP\\\\workdiag\"; node diag5.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")",
+      "PowerShell($src = Get-Content \"$env:TEMP\\\\workdiag\\\\diag5.js\" -Raw; $src = $src.Replace\\(\"if \\(top >= -50 && top <= 240\\) break;\", \"if \\(top >= -100 && top <= 280\\) break;\"\\).Replace\\(\"for \\(let k = 0; k < 30; k++\\)\", \"for \\(let k = 0; k < 60; k++\\)\"\\).Replace\\(\"window.scrollBy\\(0, d\\), top < -50 ? -250 : 100\", \"window.scrollBy\\(0, d\\), top < -100 ? -200 : 60\"\\).Replace\\('setTimeout\\(r, 300\\)\\)', 'setTimeout\\(r, 500\\)\\)'\\); Set-Content \"$env:TEMP\\\\workdiag\\\\diag6.js\" $src -Encoding utf8; Set-Location \"$env:TEMP\\\\workdiag\"; node diag6.js 2>$null; Set-Location \"d:\\\\Productive time\\\\3d-portfolio\\\\3d-portfolio\\\\Reference\\\\3d-portfolio\")"
     ],
     "additionalDirectories": [
       "d:\\Productive time\\3d-portfolio\\3d-portfolio\\src\\data",

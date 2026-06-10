@@ -10,6 +10,15 @@ interface ParaElement extends HTMLElement {
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
+// If the page is already scrolled past an animation's trigger when the
+// animation is (re)created — e.g. setSplitText re-runs on a ScrollTrigger
+// refresh while the user is below the section — the reveal would otherwise
+// stay frozen at its hidden "from" state. Snap it to its finished state.
+const completeIfPastTrigger = (anim: gsap.core.Animation) => {
+  const st = (anim as unknown as { scrollTrigger?: ScrollTrigger }).scrollTrigger;
+  if (st && st.scroll() > st.start) anim.progress(1);
+};
+
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   if (window.innerWidth < 900) return;
@@ -47,6 +56,7 @@ export default function setSplitText() {
         stagger: 0.02,
       }
     );
+    completeIfPastTrigger(para.anim);
   });
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
@@ -74,6 +84,7 @@ export default function setSplitText() {
         stagger: 0.03,
       }
     );
+    completeIfPastTrigger(title.anim);
   });
 
   ScrollTrigger.addEventListener("refresh", () => setSplitText());
