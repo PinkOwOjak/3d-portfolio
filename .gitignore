@@ -7,23 +7,62 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local files
 *.local
 
-# Editor directories and files
+# TypeScript cache
+*.tsbuildinfo
+
+# Package manager files
+.npmrc
+
+# Claude
+.claude/
+
+# Backup files
+backup/
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+
+# IDE files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.npmrc
+*.swp
 
-backup/
-.env
-._*
+# Vite cache
+.vite/
+
+# Coverage reports
+coverage/
+
+# Netlify
+.netlify/
+
+# Temporary files
+tmp/
+temp/
+
+# Optional: model/editor files
+*.bak
+*.tmp
